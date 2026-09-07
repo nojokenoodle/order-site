@@ -18,8 +18,8 @@ const menuItems = [
     name: "秘製醬香炒意麵✨",
     image: "assets/soy-sauce-yi-noodle.jpg",
     description:
-      "靈魂香油蔥與醇厚醬油在高溫火候下激發出迷人琥珀色澤。意麵特殊的孔隙緊緊鎖住每一滴鹹甜醬汁，搭配鮮嫩台灣豬肉絲與鮮蔬，口感濕潤順滑、層次豐富。",
-    price: 112,
+      "本餐點預設為兩包意麵🍜\n食量較小可於客製選項選擇「扣一包麵」，餐點價格將自動調整。\n\n靈魂香油蔥與醇厚醬油在高溫火候下激發出迷人琥珀色澤。意麵特殊的孔隙緊緊鎖住每一滴鹹甜醬汁，搭配鮮嫩台灣豬肉絲與鮮蔬，口感濕潤順滑、層次豐富。",
+    price: 132,
   },
   {
     id: "thai-boat-noodle",
@@ -45,7 +45,7 @@ const menuItems = [
     name: "韓式泡菜肉絲炒泡麵",
     image: "assets/kimchi-noodle.jpg",
     description:
-      "韓式正宗酸辣！脆口泡菜與Q彈麵體火熱爆炒，泡菜香入味、台灣鮮嫩豬肉絲，每一口都極致開胃！",
+      "韓式正宗酸辣！脆口泡菜與Q彈麵體火熱爆炒，泡菜香入味、台灣鮮嫩豬肉絲，每一口都極致開胃！\n小辣 Mild",
     price: 129,
   },
   {
@@ -124,6 +124,14 @@ const menuItems = [
     description: "香氣柔和帶蜜香，尾韻回甘，茶湯呈紅褐色\n（無糖、無供應溫熱）\n（不提供加冰塊服務）",
     price: 55,
   },
+  {
+    id: "buckwheat-tea",
+    category: "drinks",
+    name: "清爽蕎麥茶",
+    image: "assets/buckwheat-tea.jpg",
+    description: "蘊含溫潤堅果香；口感清爽順口、不苦不澀，非常適合日常輕鬆飲用。\n（冷飲）\n（不提供冰塊）",
+    price: 52,
+  },
 ];
 
 const state = {
@@ -172,6 +180,10 @@ function optionsForItem(item) {
       return false;
     }
 
+    if (item.id === "soy-sauce-yi-noodle" && option.id === "extra-noodle") {
+      return false;
+    }
+
     if (
       (item.id === "egg-soup" || item.id === "korean-kimchi" || item.id === "chili-sauce") &&
       option.id === "chili-sauce-addon"
@@ -182,11 +194,11 @@ function optionsForItem(item) {
     return option.appliesTo.includes(item.category);
   });
 
-  if (
-    item.id === "soy-sauce-yi-noodle" ||
-    item.id === "shacha-noodle" ||
-    item.id === "lard-scallion-noodle"
-  ) {
+  if (item.id === "soy-sauce-yi-noodle") {
+    options.unshift({ id: "minus-one-noodle", name: "扣一包麵", price: -20 });
+  }
+
+  if (item.id === "soy-sauce-yi-noodle" || item.id === "shacha-noodle" || item.id === "lard-scallion-noodle") {
     options.push({ id: "no-carrot-shreds", name: "✘不要紅蘿蔔絲✘", price: 0 });
   }
 
@@ -223,6 +235,10 @@ function optionsForItem(item) {
 }
 
 function maxOptionsForItem(item) {
+  if (item.id === "soy-sauce-yi-noodle") {
+    return 6;
+  }
+
   return item.id === "kimchi-noodle" ? 8 : 7;
 }
 
@@ -386,7 +402,13 @@ function openItemDialog(itemId) {
         <label class="option-row">
           <span>
             <strong>${option.name}</strong>
-            <small>${option.price > 0 ? `+${formatCurrency(option.price)}` : "免費"}</small>
+            <small>${
+              option.price > 0
+                ? `+${formatCurrency(option.price)}`
+                : option.price < 0
+                  ? `-${formatCurrency(Math.abs(option.price))}`
+                  : "免費"
+            }</small>
           </span>
           <input type="checkbox" value="${option.id}">
         </label>

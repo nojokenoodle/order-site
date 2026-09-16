@@ -76,6 +76,14 @@ const menuItems = [
     price: 119,
   },
   {
+    id: "braised-pork-rice",
+    category: "meals",
+    name: "祖傳銷魂滷肉飯🍛",
+    image: "assets/braised-pork-rice.jpg",
+    description: "嚴選台灣豬肉 x 祕方熬煮 x 極致收汁\n膠質滿滿、鹹甜剛好，濃郁而味足 (蛋需加購)",
+    price: 59,
+  },
+  {
     id: "egg-soup",
     category: "snacks",
     name: "紫菜青菜蛋花湯🍵",
@@ -165,6 +173,14 @@ function formatCurrency(value) {
 }
 
 function optionsForItem(item) {
+  if (item.id === "braised-pork-rice") {
+    return [
+      { id: "double-rice-and-sauce", name: "白飯&滷汁加倍", price: 40 },
+      { id: "fully-cooked-egg", name: "全熟蛋", price: 25 },
+      { id: "soft-cooked-egg", name: "半熟蛋", price: 25 },
+    ];
+  }
+
   const options = mainFoodOptions.filter((option) => {
     if (
       (
@@ -235,6 +251,10 @@ function optionsForItem(item) {
 }
 
 function maxOptionsForItem(item) {
+  if (item.id === "braised-pork-rice") {
+    return 3;
+  }
+
   if (item.id === "soy-sauce-yi-noodle") {
     return 6;
   }

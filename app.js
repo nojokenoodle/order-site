@@ -1,14 +1,15 @@
 const officialLineDefault = "@nojokenoodle";
 
 const mainFoodOptions = [
-  { id: "extra-rice", name: "加飯🍚", price: 20, appliesTo: ["meals"] },
-  { id: "extra-noodle", name: "加麵", price: 20, appliesTo: ["noodles"] },
-  { id: "double-meat", name: "肉加倍", price: 28, appliesTo: ["noodles", "meals"] },
-  { id: "double-wood-ear", name: "木耳加倍", price: 15, appliesTo: ["noodles", "meals"] },
-  { id: "cheese", name: "起司🧀", price: 20, appliesTo: ["noodles", "meals"] },
-  { id: "chili-sauce-addon", name: "頂級生鮮辣椒醬🌶️", price: 10, appliesTo: ["noodles", "meals", "snacks"] },
-  { id: "no-scallion", name: "✗不要綠蔥✗", price: 0, appliesTo: ["noodles", "meals"] },
-  { id: "no-wood-ear", name: "✗不要木耳✗", price: 0, appliesTo: ["noodles", "meals"] },
+  { id: "extra-rice", name: "加飯🍚", price: 20, pickupPrice: 15, appliesTo: ["meals"] },
+  { id: "extra-noodle", name: "加麵", price: 30, pickupPrice: 25, appliesTo: ["noodles"] },
+  { id: "double-meat", name: "肉加倍", price: 28, pickupPrice: 22, appliesTo: ["noodles", "meals"] },
+  { id: "double-wood-ear", name: "木耳加倍", price: 15, pickupPrice: 12, appliesTo: ["noodles", "meals"] },
+  { id: "double-vegetables", name: "菜加倍", price: 20, pickupPrice: 16, appliesTo: ["noodles"] },
+  { id: "cheese", name: "起司🧀", price: 20, pickupPrice: 15, appliesTo: ["noodles", "meals"] },
+  { id: "chili-sauce-addon", name: "頂級生鮮辣椒醬🌶️", price: 10, pickupPrice: 8, appliesTo: ["noodles", "meals", "snacks"] },
+  { id: "no-scallion", name: "✗不要綠蔥✗", price: 0, pickupPrice: 0, appliesTo: ["noodles", "meals"] },
+  { id: "no-wood-ear", name: "✗不要木耳✗", price: 0, pickupPrice: 0, appliesTo: ["noodles", "meals"] },
 ];
 
 const menuItems = [
@@ -19,7 +20,8 @@ const menuItems = [
     image: "assets/soy-sauce-yi-noodle.jpg",
     description:
       "本餐點預設為兩包意麵🍜\n食量較小可於客製選項選擇「扣一包麵」，餐點價格將自動調整。\n\n靈魂香油蔥與醇厚醬油在高溫火候下激發出迷人琥珀色澤。意麵特殊的孔隙緊緊鎖住每一滴鹹甜醬汁，搭配鮮嫩台灣豬肉絲與鮮蔬，口感濕潤順滑、層次豐富。",
-    price: 132,
+    price: 135,
+    pickupPrice: 108,
   },
   {
     id: "thai-boat-noodle",
@@ -28,7 +30,8 @@ const menuItems = [
     image: "assets/thai-boat-noodle.jpg",
     description:
       "一秒飛泰國！濃郁的泰式船麵醬汁，完美吸附在Q彈的泡麵麵條上，搭配鮮嫩台灣豬肉絲與清脆時蔬，多層次香氣在口中爆發，酸、鹹、甜完美平衡。\n(附一片檸檬與蒜酥一包)\n(不會辣)",
-    price: 139,
+    price: 145,
+    pickupPrice: 115,
   },
   {
     id: "shacha-noodle",
@@ -37,7 +40,8 @@ const menuItems = [
     image: "assets/shacha-noodle.jpg",
     description:
       "經典沙茶的濃郁焦香！沙茶的鹹香微辛在舌尖綻放，搭配軟嫩的台灣豬肉絲，讓你每一口都像在吃現炒桌菜般過癮！",
-    price: 129,
+    price: 139,
+    pickupPrice: 105,
   },
   {
     id: "kimchi-noodle",
@@ -46,7 +50,8 @@ const menuItems = [
     image: "assets/kimchi-noodle.jpg",
     description:
       "韓式正宗酸辣！脆口泡菜與Q彈麵體火熱爆炒，泡菜香入味、台灣鮮嫩豬肉絲，每一口都極致開胃！\n小辣 Mild",
-    price: 129,
+    price: 139,
+    pickupPrice: 105,
   },
   {
     id: "lard-scallion-noodle",
@@ -55,7 +60,8 @@ const menuItems = [
     image: "assets/lard-scallion-noodle.jpg",
     description:
       "經典台味！與靈魂蔥香肉燥風味醬深度揉合，搭配軟嫩的台灣豬肉絲與清脆時蔬，口感層次分明，保證讓你一口接一口，回味無窮！",
-    price: 119,
+    price: 129,
+    pickupPrice: 99,
   },
   {
     id: "nanyang-noodle",
@@ -64,7 +70,8 @@ const menuItems = [
     image: "assets/nanyang-noodle.jpg",
     description:
       "拒絕平庸調味！特製南洋風味醬汁完美入味，加上鮮嫩台灣豬肉絲爆炒，給您的味蕾感受不同的體驗\n(附一片檸檬)\n(不會辣)",
-    price: 129,
+    price: 139,
+    pickupPrice: 105,
   },
   {
     id: "fried-rice",
@@ -73,7 +80,8 @@ const menuItems = [
     image: "assets/fried-rice.jpg",
     description:
       "大火翻炒鎖住米飯靈魂，確保粒粒分明、香味飽滿。台灣豬肉絲、鮮蔬與鮮蔥，在熾熱鍋氣中激發出濃郁蔥香，簡單卻極致。",
-    price: 119,
+    price: 125,
+    pickupPrice: 99,
   },
   {
     id: "braised-pork-rice",
@@ -82,6 +90,7 @@ const menuItems = [
     image: "assets/braised-pork-rice.jpg",
     description: "嚴選台灣豬肉 x 祕方熬煮 x 極致收汁\n膠質滿滿、鹹甜剛好，濃郁而味足 (蛋需加購)",
     price: 59,
+    pickupPrice: 45,
   },
   {
     id: "egg-soup",
@@ -90,6 +99,7 @@ const menuItems = [
     image: "assets/egg-soup.jpg",
     description: "紫菜、青菜與蛋花的清湯，口感清爽、溫潤順口\n（夏季用菜：高麗菜）",
     price: 59,
+    pickupPrice: 47,
   },
   {
     id: "korean-kimchi",
@@ -98,6 +108,7 @@ const menuItems = [
     image: "assets/korean-kimchi.jpg",
     description: "超道地的韓式泡菜，「酸、辣、鮮、脆」的極致平衡！",
     price: 65,
+    pickupPrice: 52,
   },
   {
     id: "chili-sauce",
@@ -106,6 +117,7 @@ const menuItems = [
     description:
       "特製超香辣椒醬！\n會用小盒子裝(內容物≒10g)，可以分餐食用，吃不完可蓋起來放冰箱保存\n(建議在一周內食用完畢)",
     price: 10,
+    pickupPrice: 8,
   },
   {
     id: "thai-milk-tea",
@@ -115,6 +127,7 @@ const menuItems = [
     description:
       "特別調整了傳統泰奶的甜度，保留泰奶獨特的茶香及特有的焦糖感與香料風味，並融合醇厚奶質，口感絲滑而不甜膩。這是一款專為台灣味蕾設計的泰奶，讓您感受正宗南洋風情，卻更顯清爽順口。\n（無供應溫熱）\n（不提供加冰塊服務）",
     price: 75,
+    pickupPrice: 60,
   },
   {
     id: "osmanthus-green-tea",
@@ -123,6 +136,7 @@ const menuItems = [
     image: "assets/osmanthus-green-tea.jpg",
     description: "桂花香氣清雅迷人，搭配綠茶回甘清爽\n（無糖、無供應溫熱）\n（不提供加冰塊服務）",
     price: 55,
+    pickupPrice: 40,
   },
   {
     id: "jinxuan-black-tea",
@@ -131,6 +145,7 @@ const menuItems = [
     image: "assets/jinxuan-black-tea.jpg",
     description: "香氣柔和帶蜜香，尾韻回甘，茶湯呈紅褐色\n（無糖、無供應溫熱）\n（不提供加冰塊服務）",
     price: 55,
+    pickupPrice: 40,
   },
   {
     id: "buckwheat-tea",
@@ -139,6 +154,7 @@ const menuItems = [
     image: "assets/buckwheat-tea.jpg",
     description: "蘊含溫潤堅果香；口感清爽順口、不苦不澀，非常適合日常輕鬆飲用。\n（冷飲）\n（不提供冰塊）",
     price: 52,
+    pickupPrice: 40,
   },
 ];
 
@@ -172,12 +188,30 @@ function formatCurrency(value) {
   return `$${value.toLocaleString("zh-TW")}`;
 }
 
+function formatAdjustment(value) {
+  if (value > 0) return `+${formatCurrency(value)}`;
+  if (value < 0) return `-${formatCurrency(Math.abs(value))}`;
+  return "免費";
+}
+
+function pricePairMarkup(price, pickupPrice, { adjustment = false } = {}) {
+  const formatter = adjustment ? formatAdjustment : formatCurrency;
+  if (price === 0 && pickupPrice === 0) return `<span>免費</span>`;
+
+  return `
+    <span class="inline-price-pair">
+      <span class="original-price">${formatter(price)}</span>
+      <span class="pickup-price"><small>自取價</small> ${formatter(pickupPrice)}</span>
+    </span>
+  `;
+}
+
 function optionsForItem(item) {
   if (item.id === "braised-pork-rice") {
     return [
-      { id: "double-rice-and-sauce", name: "白飯&滷汁加倍", price: 40 },
-      { id: "fully-cooked-egg", name: "全熟蛋", price: 25 },
-      { id: "soft-cooked-egg", name: "半熟蛋", price: 25 },
+      { id: "double-rice-and-sauce", name: "白飯&滷汁加倍", price: 40, pickupPrice: 34 },
+      { id: "fully-cooked-egg", name: "全熟蛋", price: 25, pickupPrice: 20 },
+      { id: "soft-cooked-egg", name: "半熟蛋", price: 25, pickupPrice: 20 },
     ];
   }
 
@@ -211,43 +245,28 @@ function optionsForItem(item) {
   });
 
   if (item.id === "soy-sauce-yi-noodle") {
-    options.unshift({ id: "minus-one-noodle", name: "扣一包麵", price: -20 });
+    options.unshift({ id: "minus-one-noodle", name: "扣一包麵", price: -20, pickupPrice: -16 });
   }
 
   if (item.id === "soy-sauce-yi-noodle" || item.id === "shacha-noodle" || item.id === "lard-scallion-noodle") {
-    options.push({ id: "no-carrot-shreds", name: "✘不要紅蘿蔔絲✘", price: 0 });
+    options.push({ id: "no-carrot-shreds", name: "✘不要紅蘿蔔絲✘", price: 0, pickupPrice: 0 });
   }
 
   if (item.id === "kimchi-noodle") {
     options.push(
-      { id: "double-kimchi", name: "泡菜加倍", price: 25 },
-      { id: "no-carrot-shreds", name: "✗不要紅蘿蔔絲✗", price: 0 }
+      { id: "double-kimchi", name: "泡菜加倍", price: 25, pickupPrice: 20 },
+      { id: "no-carrot-shreds", name: "✗不要紅蘿蔔絲✗", price: 0, pickupPrice: 0 }
     );
   }
 
   if (item.id === "egg-soup") {
     options.push(
-      { id: "no-scallion", name: "✗不要綠蔥✗", price: 0 },
-      { id: "double-vegetables", name: "青菜加倍", price: 15 }
+      { id: "no-scallion", name: "✗不要綠蔥✗", price: 0, pickupPrice: 0 },
+      { id: "double-vegetables-soup", name: "菜加倍", price: 15, pickupPrice: 12 }
     );
   }
 
-  return options.map((option) => {
-    if (
-      (
-        item.id === "thai-boat-noodle" ||
-        item.id === "shacha-noodle" ||
-        item.id === "kimchi-noodle" ||
-        item.id === "lard-scallion-noodle" ||
-        item.id === "nanyang-noodle"
-      ) &&
-      option.id === "extra-noodle"
-    ) {
-      return { ...option, price: 30 };
-    }
-
-    return option;
-  });
+  return options;
 }
 
 function maxOptionsForItem(item) {
@@ -256,10 +275,14 @@ function maxOptionsForItem(item) {
   }
 
   if (item.id === "soy-sauce-yi-noodle") {
-    return 6;
+    return 7;
   }
 
-  return item.id === "kimchi-noodle" ? 8 : 7;
+  if (item.id === "kimchi-noodle") {
+    return 9;
+  }
+
+  return item.category === "noodles" ? 8 : 7;
 }
 
 function selectedOptions() {
@@ -273,8 +296,16 @@ function optionTotal(options) {
   return options.reduce((sum, option) => sum + option.price, 0);
 }
 
-function cartEntryTotal(entry) {
+function pickupOptionTotal(options) {
+  return options.reduce((sum, option) => sum + option.pickupPrice, 0);
+}
+
+function cartEntryOriginalTotal(entry) {
   return (entry.item.price + optionTotal(entry.options)) * entry.quantity;
+}
+
+function cartEntryPickupTotal(entry) {
+  return (entry.item.pickupPrice + pickupOptionTotal(entry.options)) * entry.quantity;
 }
 
 function itemCount(id) {
@@ -284,11 +315,11 @@ function itemCount(id) {
 }
 
 function subtotal() {
-  return state.cart.reduce((sum, entry) => sum + cartEntryTotal(entry), 0);
+  return state.cart.reduce((sum, entry) => sum + cartEntryOriginalTotal(entry), 0);
 }
 
-function discountedTotal() {
-  return Math.round(subtotal() * 0.8);
+function pickupTotal() {
+  return state.cart.reduce((sum, entry) => sum + cartEntryPickupTotal(entry), 0);
 }
 
 function renderMenu() {
@@ -308,7 +339,10 @@ function renderMenu() {
             <p>${item.description.replaceAll("\n", "<br>")}</p>
           </div>
           <div class="card-footer">
-            <span class="price">${formatCurrency(item.price)}</span>
+            <span class="price-group">
+              <span class="original-price">${formatCurrency(item.price)}</span>
+              <span class="pickup-price"><small>自取價</small> ${formatCurrency(item.pickupPrice)}</span>
+            </span>
             <div class="stepper" aria-label="${item.name} 數量">
               <button type="button" data-action="decrease" data-id="${item.id}" aria-label="減少 ${item.name}">−</button>
               <span>${itemCount(item.id)}</span>
@@ -337,7 +371,8 @@ function renderCart() {
               ${options}
             </div>
             <div class="cart-item-actions">
-              <strong>${formatCurrency(cartEntryTotal(entry))}</strong>
+              <strong>${formatCurrency(cartEntryPickupTotal(entry))}</strong>
+              <span>自取價</span>
               <button type="button" data-remove="${entry.id}" aria-label="移除 ${entry.item.name}">移除</button>
             </div>
           </div>
@@ -347,7 +382,7 @@ function renderCart() {
   }
 
   originalTotalEl.textContent = formatCurrency(subtotal());
-  subtotalEl.textContent = formatCurrency(discountedTotal());
+  subtotalEl.textContent = formatCurrency(pickupTotal());
   updatePreview();
 }
 
@@ -369,7 +404,7 @@ function buildOrderMessage() {
     lines.push("尚未選擇餐點");
   } else {
     state.cart.forEach((entry, index) => {
-      lines.push(`${index + 1}. ${entry.item.name} × ${entry.quantity} = ${formatCurrency(cartEntryTotal(entry))}`);
+      lines.push(`${index + 1}. ${entry.item.name} × ${entry.quantity} = ${formatCurrency(cartEntryPickupTotal(entry))}`);
       if (entry.options.length) {
         lines.push(`  客製選項：${entry.options.map((option) => option.name).join("、")}`);
       }
@@ -381,7 +416,7 @@ function buildOrderMessage() {
     `備註：${note}`,
     "",
     `原價：${formatCurrency(subtotal())}`,
-    `自取八折：${formatCurrency(discountedTotal())}`
+    `自取價：${formatCurrency(pickupTotal())}`
   );
 
   return lines.join("\n");
@@ -413,7 +448,7 @@ function openItemDialog(itemId) {
 
   itemDialogTitle.textContent = item.name;
   itemDialogDescription.textContent = item.description;
-  itemDialogBasePrice.textContent = formatCurrency(item.price);
+  itemDialogBasePrice.innerHTML = pricePairMarkup(item.price, item.pickupPrice);
   itemQuantity.value = "1";
   optionCount.textContent = options.length ? `最多可選擇 ${maxOptions} 個項目` : "此品項無客製選項";
   optionList.innerHTML = options
@@ -422,13 +457,7 @@ function openItemDialog(itemId) {
         <label class="option-row">
           <span>
             <strong>${option.name}</strong>
-            <small>${
-              option.price > 0
-                ? `+${formatCurrency(option.price)}`
-                : option.price < 0
-                  ? `-${formatCurrency(Math.abs(option.price))}`
-                  : "免費"
-            }</small>
+            <small>${pricePairMarkup(option.price, option.pickupPrice, { adjustment: true })}</small>
           </span>
           <input type="checkbox" value="${option.id}">
         </label>
@@ -444,7 +473,7 @@ function updateAddItemButton() {
   const item = menuItems.find((menuItem) => menuItem.id === state.activeItemId);
   if (!item) return;
   const quantity = Number(itemQuantity.value) || 1;
-  const total = (item.price + optionTotal(selectedOptions())) * quantity;
+  const total = (item.pickupPrice + pickupOptionTotal(selectedOptions())) * quantity;
   addItemButton.textContent = `加入訂單 ${formatCurrency(total)}`;
 }
 

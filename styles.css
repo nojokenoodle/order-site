@@ -334,9 +334,41 @@ h2 {
   margin-top: auto;
 }
 
-.price {
+.price-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.original-price {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: line-through;
+}
+
+.pickup-price {
+  color: var(--accent);
   font-size: 1.2rem;
   font-weight: 900;
+}
+
+.pickup-price small {
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.inline-price-pair {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 8px;
+}
+
+.inline-price-pair .original-price,
+.inline-price-pair .pickup-price {
+  font-size: 0.9rem;
 }
 
 .stepper {

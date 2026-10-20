@@ -6,7 +6,9 @@ const mainFoodOptions = [
   { id: "double-meat", name: "肉加倍", price: 28, pickupPrice: 22, appliesTo: ["noodles", "meals"] },
   { id: "double-wood-ear", name: "木耳加倍", price: 15, pickupPrice: 12, appliesTo: ["noodles", "meals"] },
   { id: "double-vegetables", name: "菜加倍", price: 20, pickupPrice: 16, appliesTo: ["noodles"] },
-  { id: "cheese", name: "起司🧀", price: 20, pickupPrice: 15, appliesTo: ["noodles", "meals"] },
+  { id: "cheese", name: "起司🧀", price: 15, pickupPrice: 12, appliesTo: ["noodles", "meals"] },
+  { id: "double-cheese", name: "雙倍起司", price: 25, pickupPrice: 20, appliesTo: ["noodles", "meals"] },
+  { id: "extra-scallion", name: "加綠蔥", price: 10, pickupPrice: 8, appliesTo: ["noodles", "meals"] },
   { id: "chili-sauce-addon", name: "頂級生鮮辣椒醬🌶️", price: 10, pickupPrice: 8, appliesTo: ["noodles", "meals", "snacks"] },
   { id: "no-scallion", name: "✗不要綠蔥✗", price: 0, pickupPrice: 0, appliesTo: ["noodles", "meals"] },
   { id: "no-wood-ear", name: "✗不要木耳✗", price: 0, pickupPrice: 0, appliesTo: ["noodles", "meals"] },
@@ -100,6 +102,15 @@ const menuItems = [
     description: "紫菜、青菜與蛋花的清湯，口感清爽、溫潤順口\n（夏季用菜：高麗菜）",
     price: 65,
     pickupPrice: 52,
+  },
+  {
+    id: "scallion-egg",
+    category: "snacks",
+    name: "經典蔥蛋",
+    image: "assets/scallion-egg.jpg",
+    description: "經典家常蔥蛋，加入新鮮青蔥與雞蛋煎至金黃，內層軟嫩口感，每一口都吃得到蔥香與蛋香，簡單卻讓人回味的家常好滋味！\n（2顆蛋）",
+    price: 59,
+    pickupPrice: 47,
   },
   {
     id: "korean-kimchi",
@@ -213,6 +224,10 @@ function optionsForItem(item) {
       { id: "fully-cooked-egg", name: "全熟蛋", price: 25, pickupPrice: 20 },
       { id: "soft-cooked-egg", name: "半熟蛋", price: 25, pickupPrice: 20 },
     ];
+  }
+
+  if (item.id === "scallion-egg") {
+    return [];
   }
 
   const options = mainFoodOptions.filter((option) => {

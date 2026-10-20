@@ -98,8 +98,8 @@ const menuItems = [
     name: "紫菜青菜蛋花湯🍵",
     image: "assets/egg-soup.jpg",
     description: "紫菜、青菜與蛋花的清湯，口感清爽、溫潤順口\n（夏季用菜：高麗菜）",
-    price: 59,
-    pickupPrice: 47,
+    price: 65,
+    pickupPrice: 52,
   },
   {
     id: "korean-kimchi",

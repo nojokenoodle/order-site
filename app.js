@@ -30,8 +30,8 @@ const menuItems = [
     image: "assets/thai-boat-noodle.jpg",
     description:
       "一秒飛泰國！濃郁的泰式船麵醬汁，完美吸附在Q彈的泡麵麵條上，搭配鮮嫩台灣豬肉絲與清脆時蔬，多層次香氣在口中爆發，酸、鹹、甜完美平衡。\n(附一片檸檬與蒜酥一包)\n(不會辣)",
-    price: 145,
-    pickupPrice: 115,
+    price: 139,
+    pickupPrice: 105,
   },
   {
     id: "shacha-noodle",
